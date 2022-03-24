@@ -14,18 +14,15 @@ public class ApplicationDemo {
 
     public static void main(String[] args) {
 
-        SessionFactory factory = null;
+        try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
 
-        try {
-
-            factory = new Configuration().configure().buildSessionFactory();
             DAO<Engine, String> engineDAO = new EngineDAO(factory);
 
-            final Engine engine = new Engine();
+            Engine engine = new Engine();
             engine.setModel("engine_model_03");
             engine.setPower(12345);
 
-            engineDAO.create(engine);
+            //engineDAO.create(engine);
 
             final Engine result = engineDAO.read("engine_model_03");
             System.out.println("Created : " + result);
@@ -38,13 +35,9 @@ public class ApplicationDemo {
             System.out.println("Updated : " + update);
             System.out.println();
 
-            engineDAO.delete(new Engine("engine_model_03", 54321));
+            engineDAO.delete(update);
 
             System.out.println("Deleted(empty obj) : " + engineDAO.read("engine_model_03"));
-        } finally {
-            if (factory != null) {
-                factory.close();
-            }
         }
     }
 }

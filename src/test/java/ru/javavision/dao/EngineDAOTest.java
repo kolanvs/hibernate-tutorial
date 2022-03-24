@@ -14,7 +14,7 @@ public class EngineDAOTest {
 
     private DAO<Engine, String> engineDAO;
 
-    private final Engine testEngine = new Engine();
+    private final Engine testEngine = new Engine("test", 5432);
 
     @Before
     public void before() {

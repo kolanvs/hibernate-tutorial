@@ -1,6 +1,5 @@
 package ru.javavision.dao;
 
-import com.sun.istack.internal.NotNull;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import ru.javavision.model.Engine;
@@ -16,7 +15,7 @@ public class EngineDAO implements DAO<Engine, String> {
      */
     private final SessionFactory factory;
 
-    public EngineDAO(@NotNull final SessionFactory factory) {
+    public EngineDAO(final SessionFactory factory) {
         this.factory = factory;
     }
 
@@ -26,7 +25,7 @@ public class EngineDAO implements DAO<Engine, String> {
      * @param engine for add.
      */
     @Override
-    public void create(@NotNull final Engine engine) {
+    public void create(final Engine engine) {
         try (final Session session = factory.openSession()) {
 
             session.beginTransaction();
@@ -44,7 +43,7 @@ public class EngineDAO implements DAO<Engine, String> {
      * @return engine with param model.
      */
     @Override
-    public Engine read(@NotNull final String model) {
+    public Engine read(final String model) {
         try (final Session session = factory.openSession()) {
 
             final Engine result = session.get(Engine.class, model);
@@ -59,7 +58,7 @@ public class EngineDAO implements DAO<Engine, String> {
      * @param engine new state.
      */
     @Override
-    public void update(@NotNull final Engine engine) {
+    public void update(final Engine engine) {
         try (Session session = factory.openSession()) {
 
             session.beginTransaction();
@@ -76,7 +75,7 @@ public class EngineDAO implements DAO<Engine, String> {
      * @param engine for delete.
      */
     @Override
-    public void delete(@NotNull final Engine engine) {
+    public void delete(final Engine engine) {
         try (Session session = factory.openSession()) {
 
             session.beginTransaction();
