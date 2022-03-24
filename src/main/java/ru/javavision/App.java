@@ -17,19 +17,12 @@ public class App {
 
     public static void main(String[] args) {
 
-        SessionFactory factory = null;
+        try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
 
-        try {
-
-            factory = new Configuration().configure().buildSessionFactory();
             DAO<Car, Integer> dao = new CarDAO(factory);
 
-            /**
-             * Раскоментируя интересующий метод помните что обращение к данным происходит по id.
-             * Убедитесь что данные для методов create update и delete существуют.
-             */
 
-//            read(dao);
+            read(dao);
 
 //            update(dao);
 
@@ -37,10 +30,6 @@ public class App {
 
 //            delete(dao);
 
-        } finally {
-            if (factory != null) {
-                factory.close();
-            }
         }
     }
 

@@ -9,5 +9,6 @@
         <property name="show_sql">true</property>
 
         <mapping resource="ru/javavision/model/Engine.hbm.xml" />
+        <mapping resource="ru/javavision/model/Car.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
