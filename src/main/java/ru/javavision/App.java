@@ -22,12 +22,9 @@ public class App {
             DAO<Car, Integer> dao = new CarDAO(factory);
 
 
-            read(dao);
-
+//            read(dao);
 //            update(dao);
-
-//            create(dao);
-
+            create(dao);
 //            delete(dao);
 
         }
